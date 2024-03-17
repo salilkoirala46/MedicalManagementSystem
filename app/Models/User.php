@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Doctor;
+use App\Models\Patient;
+
 
 class User extends Authenticatable
 {
@@ -42,4 +45,35 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // protected static function boot()
+    // {
+    //     parent::boot();
+
+    //     static::created(function ($user) {
+    //         if ($user->user_type === 1) {
+    //             $user->doctor()->create([
+    //                 'user_id' => $user->id, 
+    //                 'name'=>$user->name,
+    //                 'email'=>$user->email,
+    //             ]);
+    //         } elseif ($user->user_type === 0) {
+    //             $user->patient()->create([
+    //                 'user_id' => $user->id,
+    //                 'name'=>$user->name,
+    //                 'email'=>$user->email,
+    //             ]);
+    //         }
+    //     });
+    // }
+
+    public function doctor()
+    {
+        return $this->hasOne(Doctor::class);
+    }
+
+    public function patient()
+    {
+        return $this->hasOne(Patient::class);
+    }
 }

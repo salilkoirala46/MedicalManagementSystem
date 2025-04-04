@@ -1,5 +1,5 @@
 # Medical Management system
-This is a project description for ontology
+This is a medical management system
 
 Setup
 

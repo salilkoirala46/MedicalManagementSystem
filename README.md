@@ -1,4 +1,4 @@
-# Ontology
+# Medical Management system
 This is a project description for ontology
 
 Setup
